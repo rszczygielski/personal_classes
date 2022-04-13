@@ -1,6 +1,18 @@
-
+from enum import Enum, auto
 from datetime import timedelta
 import random
+
+class BikeType(Enum):
+    ROAD_BIKE = auto
+    MOUNTAIN = auto
+    BIKE_FOLDING = auto
+    BIKE_FIXED = auto
+    GEAR_BIKE = auto
+    BMX = auto
+    RECUMBENT_BIKE = auto
+    CRUISER = auto
+
+
 
 class Bike_Computer():
     def __init__(self):
@@ -30,11 +42,12 @@ class Bike_Computer():
         1.Road Bike 
         2.Mountain Bike 
         3.Touring Bike 
-        4.Folding Bike 
-        5.Fixed Gear/Track Bike 
-        6.BMX 
-        7.Recumbent Bike 
-        8.Cruiser"""))
+        4.Folding Bike
+        5.Fixed Bike
+        6.Gear/Track Bike 
+        7.BMX 
+        8.Recumbent Bike 
+        9.Cruiser"""))
         self.current_bike.type = self.types[chose_bike_type - 1]
         
         

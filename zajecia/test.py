@@ -1,6 +1,24 @@
 import argparse
+from enum import Enum, auto
+
+class BikeType(Enum):
+    ROAD_BIKE = auto()
+    MOUNTAIN = auto()
+    BIKE_FOLDING = auto()
+    BIKE_FIXED = auto()
+    GEAR_BIKE = auto()
+    BMX = auto()
+    RECUMBENT_BIKE = auto()
+    CRUISER = auto()
 
 
+class Test():
+    def __init__(self, type):
+        self.type = type
+
+
+    def printer(self):
+        print(self.type.name)
 # # def printer(x):
 # #     return x
 
@@ -115,16 +133,18 @@ import argparse
 
 
  
-parser = argparse.ArgumentParser(description='program which returns an square')
-parser.add_argument('s1', metavar='side1', type=int,
-                help='This represents side1' )
-parser.add_argument('s2', metavar='side2', type=int,
-                help='This represents side2')
-args = parser.parse_args()
+# parser = argparse.ArgumentParser(description='program which returns an square')
+# parser.add_argument('s1', metavar='side1', type=int,
+#                 help='This represents side1' )
+# parser.add_argument('s2', metavar='side2', type=int,
+#                 help='This represents side2')
+# args = parser.parse_args()
 
-def square (side1, side2):
-    return 2 * (side1 + side2)
+# def square (side1, side2):
+#     return 2 * (side1 + side2)
 
 
 if __name__ == "__main__":
-    print (square(args.s1, args.s2))
+    # print (square(args.s1, args.s2))
+    bike = Test(BikeType.BIKE_FIXED) 
+    bike.printer()
