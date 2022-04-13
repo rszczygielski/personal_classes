@@ -7,7 +7,8 @@ class Menu():
     
     def dish_reader(self):
         index = 1
-        with open(r"C:\Users\SEBA XD\Desktop\python vsc\zajecia\menu.txt", encoding="utf-8") as menu:
+        # with open(r"C:\Users\SEBA XD\Desktop\python vsc\zajecia\menu.txt", encoding="utf-8") as menu: #window
+        with open("/home/radeksz/Documents/python_VSC/personal_classes/zajecia/menu.txt") as menu: #linux
             for line in menu.readlines():
                 line.strip()
                 if ";" in line:

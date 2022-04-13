@@ -1,15 +1,11 @@
 from enum import Enum, auto
 from datetime import timedelta
+from locale import currency
 import random
 
 class BikeType(Enum):
     ROAD_BIKE = auto()
     MOUNTAIN = auto()
-    BIKE_FOLDING = auto()
-    BIKE_FIXED = auto()
-    GEAR_BIKE = auto()
-    BMX = auto()
-    RECUMBENT_BIKE = auto()
     CRUISER = auto()
 
 
@@ -20,11 +16,18 @@ class Bike_Computer():
         self.whole_distance = 0
         self.last_distance = 0
         self.time = timedelta()
-        self.bikes = [Bike_stats(), Bike_stats(), Bike_stats()]
+        self.bikes = [Bike_stats(BikeType.ROAD_BIKE), Bike_stats(BikeType.MOUNTAIN), Bike_stats(BikeType.CRUISER)]
         self.current_bike = self.bikes[0]
-        self.type = type.name
+        self.type = type
 
-    
+
+    def set_bike(self, type):
+        for bike in self.bikes:
+            if type == bike.type:
+                self.current_bike = bike
+        
+
+
     def kmH_to_mS(self, speedkmh):
         return speedkmh * 1000/3600
 
@@ -50,26 +53,39 @@ class Bike_Computer():
     
     def print_last_statistics(self):
         print("\n" + "*" * 25)
-        print("*****", self.type , "*****")
-        print(f"\tLAST RIDE \n\tDistance: {self.last_distance} \n\tTime: {self.time}")
+        print("*"*8, self.current_bike.type.name , "*"*8)
+        print(f"\tLAST RIDE \nDistance: \t{self.last_distance} \nTime: \t\t{self.time}")
 
     def print_all_statistics(self):
-        print(f"""
-            Whole distance: {self.whole_distance} 
-            Whole time: {self.whole_time}""")
+        print("\n" + "*" * 25)
+        for bike in self.bikes:
+            print("*"*8, bike.type.name, "*"*8)
+            print(f"\tWHOLE RIDE \nDistance: \t{bike.whole_distance} \nTime: \t\t{bike.whole_time}")
+            print("\n" + "*" * 25)
 
 class Bike_stats():
-    def __init__(self):
+    def __init__(self, type):
         self.last_distance = 0
         self.last_time = timedelta()
         self.whole_time = timedelta()
         self.whole_distance = 0
+        self.type = type
 
 
 if __name__ == "__main__":
-    bike_computer = Bike_Computer(BikeType.CRUISER)
+    bike_computer = Bike_Computer(BikeType.ROAD_BIKE)
+    for i in range(10):
+        bike_computer.trip(random.uniform(1, 100), random.randint(7, 30))
+    # bike_computer.print_last_statistics()
+    bike_computer.set_bike(BikeType.MOUNTAIN)
     bike_computer.trip(random.uniform(1, 100), random.randint(7, 30))
-    bike_computer.print_last_statistics()
+    bike_computer.print_all_statistics()
+
+
+    # bike_computer.set_bike(BikeType.BIKE_FIXED)
+    # bike_computer.trip(random.uniform(1, 100), random.randint(7, 30))
+    # bike_computer.print_last_statistics()
+    # bike_computer.print_all_statistics()
 
 
 

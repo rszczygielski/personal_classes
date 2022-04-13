@@ -1,6 +1,6 @@
 import random
 
-def totolotek():
+def lottery():
     print("Podaj 6 liczb: ")
     
     wynik = []
@@ -22,4 +22,4 @@ def totolotek():
     porownanie = [element for element in liczby if element in wynik]
     print(porownanie)
     
-totolotek()
+lottery()
