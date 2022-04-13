@@ -1,0 +1,72 @@
+title:Cafarnaum
+rating:8.3
+type:Drama
+production:USA
+premiere:17.01.2018
+
+title:Liberal Arts
+rating:6.3
+type:Drama/Comedy
+production:USA
+premiere:22.01.2012
+
+title:Promising Young Woman
+rating:7.8
+type:Drama/Criminal
+production:USA
+premiere:25.01.2020
+
+title:Palm Springs
+rating:7.0
+type:Comedy
+production:USA
+premiere:26.01.2020
+
+title:Wild
+rating:4.0
+type:Biography/Drama
+production:USA
+premiere:29.08.2014
+
+title:Yes man
+rating:7.0
+type:Romantic/comedy
+production:Australia/USA
+premiere:9.12.2008
+
+title:Friends with benefits
+rating:6.7
+type:Romantic/comedy
+production:USA
+premiere:22.07.2011
+
+title:A long way down
+rating:6.6
+type:Drama/Comedy
+production:German/United Kingdom
+premiere:10.02.2014
+
+title:Before sunset
+rating:7.5
+type:Drama/Romantic
+production:USA
+premiere:10.02.2004
+
+title:Duze zwierze
+rating:7.4
+type:Drama
+production:Poland
+premiere:08.07.2000
+
+title:The way back
+rating:7.4
+type:drama/adventure
+production:USA/Poland
+premiere:03.09.2010
+
+title:Mies vailla menneisyytta
+rating:7.4
+type:Comedy/Drama
+production:Finland/France/German
+premiere:01.03.2002
+

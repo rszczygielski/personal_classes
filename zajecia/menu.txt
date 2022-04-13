@@ -1,0 +1,28 @@
+Dania główne
+rosół z pieczonej kury;17
+gulaszowa na wołowinie;26
+dorsz smażony na maśle;45
+stek z halibuta;47
+pierś z kurczaka supreme;39
+pieczone udko z gęsi;48
+burger wołowy;39
+poledwica wołowa;53
+
+Desery
+domowy sernik;22
+mus makowy;21
+puchar lodowo;15
+pizza
+krewetkowa;25
+serowa;25
+hawajska;23
+pieczarkowa;21
+
+Napoje
+cola;5
+fanta;5
+sprite;5
+nestea;5
+kawa;10
+cappucino;12
+herbata;9
