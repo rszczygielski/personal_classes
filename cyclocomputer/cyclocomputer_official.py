@@ -23,7 +23,6 @@ class Bike_Computer():
         self.sides = (len(self.line) - len(self.current_bike.type.name)) // 2
         
 
-
     def set_bike(self, type):
         for bike in self.bikes:
             if type == bike.type:
@@ -42,8 +41,8 @@ class Bike_Computer():
         speed_msh = self.kmH_to_mS(speed)
 
         self.last_distance = round(self.time.seconds * speed_msh / 1000, 2)
-        print(f"****You rode: {self.last_distance} km****")
-        print(f"****Time: {self.time} min****")
+        # print(f"****You rode: {self.last_distance} km****")
+        # print(f"****Time: {self.time} min****")
 
         """Update of chosen bike"""
         self.current_bike.whole_distance += self.last_distance
@@ -57,6 +56,7 @@ class Bike_Computer():
         print(self.line)
         print("*" * self.sides + self.current_bike.type.name + "*" * self.sides)
         print(f"\tLAST RIDE \nDistance: \t{round(self.last_distance, 2)}\nTime: \t\t{self.time}")
+        print(self.line)
 
     def print_all_statistics(self):
         print("\n" + self.line)
@@ -82,10 +82,11 @@ if __name__ == "__main__":
     bike_computer = Bike_Computer(BikeType.ROAD_BIKE)
     for i in range(10):
         bike_computer.trip(random.uniform(1, 100), random.randint(7, 30))
-    bike_computer.print_last_statistics()
+    # bike_computer.print_last_statistics()
     bike_computer.set_bike(BikeType.MOUNTAIN)
     bike_computer.trip(random.uniform(1, 100), random.randint(7, 30))
-    bike_computer.print_all_statistics()
+    # bike_computer.print_all_statistics()
+    bike_computer.print_last_statistics()
 
 
     # bike_computer.set_bike(BikeType.BIKE_FIXED)
