@@ -148,3 +148,4 @@ if __name__ == "__main__":
     # print (square(args.s1, args.s2))
     bike = Test(BikeType.BIKE_FIXED) 
     bike.printer()
+    
