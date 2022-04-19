@@ -1,14 +1,16 @@
 from datetime import datetime
 from inspect import stack
+import os
 
 class Logger():
     def __init__(self):
         self.settings()
     
-    def settings(self, showLog_level=True, show_date=True, show_file_name=True):
+    def settings(self, showLog_level=True, show_date=True, show_file_name=True, save_bool=False):
         self.date_bool = show_date
         self.log_level_bool = showLog_level
         self.file_name_bool = show_file_name
+        self.save_bool = save_bool
 
     def time(self):
         return datetime.now().strftime("%Y %m %d %H:%M:%S")
@@ -22,6 +24,7 @@ class Logger():
             printer += " " + elem
         return printer
     
+    
     def get_log(self, log_level, argument):
         log = ""
         if self.date_bool:
@@ -31,17 +34,26 @@ class Logger():
         if self.log_level_bool:
             log += log_level + " "
         log += self.arguments(argument)
+        # path = os.getcwd()
+        # if self.save_bool:
+        #     name = input("Chose file name: ")
+        #     file = open(path+"/"+name+".txt", "w")
+        #     print("".join(self.info + "\n" + self.warning + "\n" + self.error))
+        #     file.write(self.info + "\n" + self.warning + "\n" + self.error)
         return log
 
     def INFO(self, *argument):
         print(self.get_log("INFO", argument))
+        self.info = self.get_log("INFO", argument)
         
     def WARNING(self, *argument):
         print("\033[93m" + self.get_log("WARNING", argument),"\033[0m")
+        self.warning = "\033[93m" + self.get_log("WARNING", argument),"\033[0m"
 
     
     def ERROR(self, *argument):
         print("\033[91m" + self.get_log("ERROR", argument),"\033[0m")
+        self.error = "\033[91m" + self.get_log("ERROR", argument),"\033[0m"
 
 
 #ustawienia, zapis logeru do pliku(określonego)

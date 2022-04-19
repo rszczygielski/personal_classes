@@ -20,10 +20,11 @@ if __name__ == "__main__":
     logger.INFO("abc", "efg")
     logger.WARNING("dfas", "dfa")
     logger.ERROR("1234")
-    logger.settings(show_file_name=False)
+    logger.settings(show_file_name=False, save_bool=True)
     logger.INFO("abc", "efg")
     logger.WARNING("dfas", "dfa")
     logger.ERROR("1234")
+
 
 
 

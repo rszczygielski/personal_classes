@@ -1,5 +1,9 @@
 import argparse
+from datetime import timedelta
 from enum import Enum, auto
+import random
+import os
+
 
 class BikeType(Enum):
     ROAD_BIKE = auto()
@@ -148,4 +152,19 @@ if __name__ == "__main__":
     # print (square(args.s1, args.s2))
     bike = Test(BikeType.BIKE_FIXED) 
     bike.printer()
+    print("\t" + "lol")
+    time1 = timedelta(seconds=random.randint(1, 10000))
+    time2 = timedelta(seconds=random.randint(1, 10000))
+    print(time1)
+    print(time2)
+    if time1 > time2:
+        print("time1 wins")
+    else:
+        print("time2 wins")
+        time1 = time2
+    print("time1:", time1)
+    path = os.getcwd()
+    name = input("Chose file name: ")
+    open(path+"/"+name+".txt", "w")
+
     

@@ -7,7 +7,7 @@ class BikeType(Enum):
     CRUISER = auto()
 
 
-class Cycling_activity():
+class Cycling():
     def __init__(self, speed=0, distance=0, cals=0, time=timedelta(0,0,0), type_bike=BikeType.UNIVERSAL):
         self.speed = speed
         self.distance = distance
