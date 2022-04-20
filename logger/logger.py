@@ -5,7 +5,6 @@ import os
 class Logger():
     def __init__(self):
         self.settings()
-        self.save_to_file()
     
     def settings(self, showLog_level=True, show_date=True, show_file_name=True, save_bool=False):
         self.date_bool = show_date
@@ -41,11 +40,8 @@ class Logger():
         path = os.getcwd()
         if self.save_bool:
             name = input("Chose file name: ")
-            file0 = open(path+"/"+name+".txt", "w")
-            print("".join(self.info + "\n" + self.warning + "\n" + self.error))
-            file0.write(self.info + "\n" + self.warning + "\n" + self.error)
-        else:
-            pass
+            open(path + "/" + name + ".txt", "w").write(self.info + "\n" + self.warning + "\n" + self.error)
+        
 
     def INFO(self, *argument):
         print(self.get_log("INFO", argument))
@@ -53,12 +49,14 @@ class Logger():
         
     def WARNING(self, *argument):
         print("\033[93m" + self.get_log("WARNING", argument),"\033[0m")
-        self.warning = "\033[93m" + self.get_log("WARNING", argument),"\033[0m"
+        self.warning = self.get_log("WARNING", argument)
 
     
     def ERROR(self, *argument):
         print("\033[91m" + self.get_log("ERROR", argument),"\033[0m")
-        self.error = "\033[91m" + self.get_log("ERROR", argument),"\033[0m"
+        self.error = self.get_log("ERROR", argument)
+    
+
 
 
 #ustawienia, zapis logeru do pliku(określonego)
