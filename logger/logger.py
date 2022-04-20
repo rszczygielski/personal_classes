@@ -5,6 +5,7 @@ import os
 class Logger():
     def __init__(self):
         self.settings()
+        self.save_to_file()
     
     def settings(self, showLog_level=True, show_date=True, show_file_name=True, save_bool=False):
         self.date_bool = show_date
@@ -34,13 +35,17 @@ class Logger():
         if self.log_level_bool:
             log += log_level + " "
         log += self.arguments(argument)
-        # path = os.getcwd()
-        # if self.save_bool:
-        #     name = input("Chose file name: ")
-        #     file = open(path+"/"+name+".txt", "w")
-        #     print("".join(self.info + "\n" + self.warning + "\n" + self.error))
-        #     file.write(self.info + "\n" + self.warning + "\n" + self.error)
         return log
+    
+    def save_to_file(self):
+        path = os.getcwd()
+        if self.save_bool:
+            name = input("Chose file name: ")
+            file0 = open(path+"/"+name+".txt", "w")
+            print("".join(self.info + "\n" + self.warning + "\n" + self.error))
+            file0.write(self.info + "\n" + self.warning + "\n" + self.error)
+        else:
+            pass
 
     def INFO(self, *argument):
         print(self.get_log("INFO", argument))

@@ -87,55 +87,6 @@ class Test():
 #                 films.append(film)
 #                 film = {}
 #     return films
-
-
-
-
-# # ===============================================================================================================================================================
-# #                                           WERSJA Z ZAMIANĄ STRINA NA INT
-# # ===============================================================================================================================================================
-
-# def newest_film(L: list):
-#     film_name = L[0]["title"]
-#     date_p = L[0]["premiere"].split(".")
-#     date_p = datetime.date(int(date_p[2]), int(date_p[1]) , int(date_p[0]))
-#     print(date_p)
-#     for dict in L:
-#         date_string = (dict["premiere"].split("."))
-#         day, month, year = int(date_string[0]), int(date_string[1]), int(date_string[2])
-#         chacked_date = datetime.date(year,month,day)
-#         # print(chacked_date)
-#         if chacked_date > date_p:
-#             film_name = dict['title']
-#             date_p = chacked_date
-#         # if year > date_p[2]:
-#         #     film_name = dict['title']
-#         #     date_p = dict["premiere"].split(".")
-#         #     for i in range(len(date_p)):
-#         #         date_p[i] = int(date_p[i])
-#         # elif year == date_p[2]:
-#         #     if month > date_p[1]:
-#         #         film_name = dict['title']
-#         #         date_p = dict["premiere"].split(".")
-#         #         for i in range(len(date_p)):
-#         #             date_p[i] = int(date_p[i])
-#         #     if month == date_p[1]:
-#         #         if day > date_p[0]:
-#         #             film_name = dict['title']
-#         #             date_p = dict["premiere"].split(".")
-#         #             for i in range(len(date_p)):
-#         #                 date_p[i] = int(date_p[i])
-#     print(film_name)
-
-# if __name__ == "__main__":
-#     newest_film(read_films("filmweb.txt"))
-#     plik = open("sad")
-#     if plik.readable():
-#         print("jest")
-
-
-
-
  
 # parser = argparse.ArgumentParser(description='program which returns an square')
 # parser.add_argument('s1', metavar='side1', type=int,
@@ -147,24 +98,17 @@ class Test():
 # def square (side1, side2):
 #     return 2 * (side1 + side2)
 
+def command():
+    return os.system("hmmbuild -h")
 
 if __name__ == "__main__":
     # print (square(args.s1, args.s2))
-    bike = Test(BikeType.BIKE_FIXED) 
-    bike.printer()
-    print("\t" + "lol")
-    time1 = timedelta(seconds=random.randint(1, 10000))
-    time2 = timedelta(seconds=random.randint(1, 10000))
-    print(time1)
-    print(time2)
-    if time1 > time2:
-        print("time1 wins")
-    else:
-        print("time2 wins")
-        time1 = time2
-    print("time1:", time1)
-    path = os.getcwd()
-    name = input("Chose file name: ")
-    open(path+"/"+name+".txt", "w")
+    # bike = Test(BikeType.BIKE_FIXED) 
+    # bike.printer()
+    # path = os.getcwd()
+    # name = input("Chose file name: ")
+    # open(path+"/"+name+".txt", "w")
+    command()
+    
 
     
