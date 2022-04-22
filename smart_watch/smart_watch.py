@@ -1,8 +1,8 @@
-# 3 aktywności, jazda rowerem, spacer, fitnes - każda w innej klasie
 import cycling
 import fitness
 import running
 import swimming
+import tennis
 import random
 from datetime import timedelta
 
@@ -28,7 +28,8 @@ class Smart_watch():
     
     def adition_stats_printer(self):
         print(("\n" + "*" * 30) * 2 + "\n\t aditional Stats".upper() )
-        print(f"\n > Top Speed: {self.top_speed} km/h \n > Top Distance: {self.top_distance} km \n > Cals: {self.top_cals} cal \n > Time: {self.top_time} \n > Full Time: {self.full_time} \n > Activities amount: {self.activity_counter}")
+        print(f"\n > Top Speed: {self.top_speed} km/h \n > Top Distance: {self.top_distance} km")
+        print(f" > Cals: {self.top_cals} cal \n > Time: {self.top_time} \n > Full Time: {self.full_time} \n > Activities amount: {self.activity_counter}")
         print(("\n" + "*" * 30) * 2)
         
 
@@ -57,6 +58,12 @@ class Smart_watch():
         self.full_time += swimming.time
         self.activity_counter += 1
     
+    def tennis(self, tennis:tennis.Tennis):
+        self.activity_list.append(tennis)
+        self.aditional_stats_checker(tennis.speed, tennis.distance, tennis.cals, tennis.time)
+        self.full_time += tennis.time
+        self.activity_counter += 1
+    
     
     def activity_printer(self):
         for activity in self.activity_list:
@@ -64,17 +71,15 @@ class Smart_watch():
             if isinstance(activity, fitness.Fitness) == 0:
                 common_activites = f" > Speed: {activity.speed} km/h \n > Distance: {activity.distance} km \n > Cals: {activity.cals} cal \n > Time: {activity.time}"
             if isinstance(activity, running.Running):
-                print(name)
-                print(common_activites)
+                print(name, "\n" + common_activites)
             if isinstance(activity, cycling.Cycling):
-                print(name)
-                print(common_activites, f"\n > Bike Type: {activity.type_bike.name}")
+                print(name, "\n" + common_activites, f"\n > Bike Type: {activity.type_bike.name}")
             if isinstance(activity, fitness.Fitness):
-                print(name)
-                print(f"\n > Cals: {activity.cals} cal \n > Time: {activity.time}")
+                print(name, "\n" + f"\n > Cals: {activity.cals} cal \n > Time: {activity.time}")
             if isinstance(activity, swimming.Swimming):
-                print(name)
-                print(common_activites, f"\n > Amount of pools defeted: {activity.pools}")
+                print(name, "\n" + common_activites, f"\n > Amount of pools defeted: {activity.pools}")
+            if isinstance(activity, tennis.Tennis):
+                print(name, "\n" + common_activites)
         print(("\n" + "*" * 30) * 2)
 
 
@@ -112,6 +117,14 @@ class Simulator():
         cals = random.randint(50,2000)
         time = timedelta(seconds=random.randint(1, 10000))
         return fitness.Fitness(cals, time)
+    @staticmethod
+    def tennis():
+        time = timedelta(seconds=random.randint(1, 10000))
+        speed = random.randint(5, 15)
+        speed_msh = Simulator.kmH_to_mS(speed)
+        distance = round(time.seconds * speed_msh / 1000, 3)
+        cals = random.randint(50,2000)
+        return tennis.Tennis(speed, distance, cals, time)
 
 
 """ zmienna statyczna oraz funkcja statyczna jest tlyko jedna i nie wymaga tworzenia instancji""" 
@@ -121,14 +134,13 @@ if __name__ == "__main__":
     smart_watch.cycling(Simulator.cycling_sim())
     smart_watch.running(Simulator.runnin_sim())
     smart_watch.swimming(Simulator.swimming_sim())
-    smart_watch.swimming(Simulator.swimming_sim())
     smart_watch.fitness(Simulator.fitness())
+    smart_watch.tennis(Simulator.tennis())
     smart_watch.activity_printer()
     smart_watch.adition_stats_printer()
 
 
 
 
-## dodać aktywności jakieś, dodatkowo żeby smart watch liczył ile danych aktywności zostało wykonanych, suma czasów wszystkich aktywności, wyświetl rekordowe aktywności
-
+# do topowej wartości dodac akywność
 

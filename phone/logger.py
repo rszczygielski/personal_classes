@@ -6,7 +6,7 @@ class LoggerClass():
     def __init__(self):
         self.settings()
 
-    
+
     def settings(self, showLog_level=True, show_date=True, show_file_name=True, save_bool=False, path=os.getcwd()):
         self.date_bool = show_date
         self.log_level_bool = showLog_level
@@ -43,7 +43,7 @@ class LoggerClass():
             logFile.write(log)
             logFile.write("\n")
             logFile.close()
-            
+               
     def INFO(self, *argument):
         info = self.get_log("INFO", argument)
         print(self.get_log("INFO", argument))
@@ -62,7 +62,7 @@ class LoggerClass():
         self.save_to_file(error)
     
 
-
+Logger = LoggerClass()
 
 #ustawienia, zapis logeru do pliku(określonego)
     

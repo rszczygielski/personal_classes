@@ -105,10 +105,11 @@ if __name__ == "__main__":
     # print (square(args.s1, args.s2))
     # bike = Test(BikeType.BIKE_FIXED) 
     # bike.printer()
-    # path = os.getcwd()
-    # name = input("Chose file name: ")
-    # open(path+"/"+name+".txt", "w")
-    command()
+    path = os.getcwd()
+    name = input("Chose file name: ")
+    file1 = open(path+"/"+name+".txt", "w")
+    file1.write("\033[93m" + "WARNING" +"\033[0m")
+    # command()
     
 
     
