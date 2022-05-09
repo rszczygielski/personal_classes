@@ -105,11 +105,14 @@ if __name__ == "__main__":
     # print (square(args.s1, args.s2))
     # bike = Test(BikeType.BIKE_FIXED) 
     # bike.printer()
-    path = os.getcwd()
-    name = input("Chose file name: ")
-    file1 = open(path+"/"+name+".txt", "w")
-    file1.write("\033[93m" + "WARNING" +"\033[0m")
-    # command()
-    
-
-    
+    line = "Marek Kowalski HOME:123456789 FAX:257326791 WORK:123456781" 
+    splitedLine = line.split()
+    firstName = splitedLine[0]
+    lastName = splitedLine[1]
+    numbers = splitedLine[2:]
+    for numberStruct in numbers:
+        splitedNumber = numberStruct.split(":")
+        numberType = splitedNumber[0]
+        number = splitedNumber[1]
+        print(numberType)
+        print(number)

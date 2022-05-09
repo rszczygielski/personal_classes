@@ -15,7 +15,7 @@ class Phone():
     def __init__(self):
         self.contacts = []
         self.nameFile = "contacts.txt"
-        # self.readContacts()
+        self.readContacts()
 
     
     def addContact(self, firstName:str, lastName:str, *numbers):
@@ -55,10 +55,23 @@ class Phone():
     
     def ifDuplicatesExsist(self, firstName:str, lastName:str, numbers):
         for contact in self.contacts:
-            for number in contact.numbers:
-                if contact.firstName == firstName and contact.lastName == lastName and number in numbers:
+            for numberStruct in contact.numbers:
+                if contact.firstName == firstName and contact.lastName == lastName and numberStruct.number in numbers:
                     return True
         return False
+    
+    def checkNumberType(self, number, numberType):
+        if numberType == NumberType.FAX.name:
+            return Number(number, NumberType.FAX)
+        if numberType == NumberType.HOME.name:
+            return Number(number, NumberType.HOME)
+        if numberType == NumberType.MOBILE.name:
+            return Number(number, NumberType.MOBILE)
+        if numberType == NumberType.PERSONAL.name:
+            return Number(number, NumberType.PERSONAL)
+        if numberType == NumberType.WORK.name:
+            return Number(number, NumberType.WORK)
+        
 
     def readContacts(self):
         if not os.path.isfile(self.nameFile):
@@ -70,15 +83,26 @@ class Phone():
         else:
             for line in lines:
                 line = line.strip()
-                splitedLine = line.split(" ")
+                splitedLine = line.split()
                 if len(splitedLine) >= 3:
                     firstName = splitedLine[0]
                     lastName = splitedLine[1]
-                    numbers = splitedLine[2:]
-                    if not self.ifDuplicatesExsist(firstName, lastName, numbers):
-                        self.contacts.append(Contact(firstName, lastName, numbers))
+                    numbersInLine = splitedLine[2:]
+                    numbers = []
+                    for numberInLine in numbersInLine:
+                        splitedNumber = numberInLine.split(":")
+                        print(splitedNumber)
+                        numberType = splitedNumber[0]
+                        number = splitedNumber[1]
+                        number = self.checkNumberType(number, numberType)
+                        numbers.append(number)
+                    self.contacts.append(Contact(firstName, lastName, numbers))
             for contact in self.contacts:
-                print(contact.firstName, contact.lastName, contact.numbers)
+                numbersToPrint = []
+                for numberStruct in contact.numbers:
+                    numberToPrint = f"{numberStruct.numberType.name}: {numberStruct.number}"
+                    numbersToPrint.append(numberToPrint)
+                print(contact.firstName, contact.lastName, numbersToPrint)
     
     def showContacts(self):
         for contact in self.contacts:
