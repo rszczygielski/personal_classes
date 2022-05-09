@@ -1,6 +1,7 @@
 from datetime import datetime
 from inspect import stack
 import os
+from inspect import currentframe, getframeinfo
 
 class LoggerClass():
     def __init__(self):
@@ -18,7 +19,9 @@ class LoggerClass():
         return datetime.now().strftime("%Y %m %d %H:%M:%S")
         
     def file_name(self):
-        return stack()[3].filename.split("/")[-1]
+        fileName = stack()[3].filename.split("/")[-1]
+        lineNum = stack()[3].lineno
+        return f"{fileName}: {lineNum}"
 
     def arguments(self, arguments):
         printer = ""
@@ -62,7 +65,7 @@ class LoggerClass():
         self.save_to_file(error)
     
 
-
+Logger = LoggerClass()
 
 #ustawienia, zapis logeru do pliku(określonego)
     
