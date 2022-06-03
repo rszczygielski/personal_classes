@@ -11,7 +11,6 @@ def get_catalogs_and_files(path: str, all_files: list):
         if os.path.isdir(os.path.join(path, elem)):
             get_catalogs_and_files(os.path.join(path, elem), all_files)
 
-
 def copy_to_destination(source: str, destination: str):
     all_files = []
     get_catalogs_and_files(source, all_files)

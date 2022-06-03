@@ -1,4 +1,6 @@
-from myLogger.myLogger import Logger
+import sys
+sys.path.insert(0,"/home/radeksz/Documents/python_VSC/personal_classes/phone/logger")
+from logger import Logger
 from enum import Enum
 import os
 # przez to, że w programie logger.py stworzyłem instancje LoggerClass to nie muszę tworzyć podaczas inportu 
@@ -242,3 +244,4 @@ if __name__ == "__main__":
 # read zrobić z Enumami DONE
 # zrobić test na save file no ogólnie ile się da
 # zwróc wszystkie kontakty które mają to samo imię lub nazwisko
+# smtp lib ogarnij i zrób mail

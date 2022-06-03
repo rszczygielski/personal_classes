@@ -1,7 +1,6 @@
 from datetime import datetime
 from inspect import stack
 import os
-from inspect import currentframe, getframeinfo
 
 class LoggerClass():
     def __init__(self):
@@ -64,17 +63,4 @@ class LoggerClass():
         print("\033[91m" + error,"\033[0m")
         self.save_to_file(error)
     
-
 Logger = LoggerClass()
-
-#ustawienia, zapis logeru do pliku(określonego)
-    
-    
-
-    
-    
-
-
-
-
-
